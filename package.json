@@ -1,0 +1,12 @@
+{
+  "name": "koa2-started",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "lizhigao <lizhigao1231@163.com>",
+  "license": "MIT"
+}

@@ -8,5 +8,13 @@
   },
   "keywords": [],
   "author": "lizhigao <lizhigao1231@163.com>",
-  "license": "MIT"
+  "license": "MIT",
+  "dependencies": {
+    "koa": "^2.7.0",
+    "module-alias": "^2.2.1"
+  },
+  "_moduleAliases": {
+    "@root": ".",
+    "@src": "./src"
+  }
 }

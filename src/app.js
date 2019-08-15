@@ -20,7 +20,7 @@ app.use(async (ctx, next) => {
 
 app.use(async ctx => {
   // console.log(ctx);
-  ctx.body = 'Hello World!';
+  ctx.body = 'Hello World!'; 
 });
 
 // app.on('error', (err, ctx) => {

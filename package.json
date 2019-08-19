@@ -10,8 +10,10 @@
   "author": "lizhigao <lizhigao1231@163.com>",
   "license": "MIT",
   "dependencies": {
+    "@koa/router": "^8.0.0",
     "koa": "^2.7.0",
-    "module-alias": "^2.2.1"
+    "module-alias": "^2.2.1",
+    "require-directory": "^2.1.1"
   },
   "_moduleAliases": {
     "@root": ".",

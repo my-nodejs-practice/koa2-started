@@ -1,5 +1,6 @@
 const Router = require('@koa/router');
 const requireDirectory = require('require-directory');
+
 class InitManager {
   static initCore(app) {
     // 入口方法

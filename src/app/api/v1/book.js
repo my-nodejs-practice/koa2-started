@@ -1,6 +1,6 @@
 const Router = require('@koa/router');
 const router = new Router();
-const { HttpException } = require('@src/core/http_exception');
+// const { ParameterException } = require('@src/core/http_exception');
 
 router.get('/book/list', async ctx => {
   // console.log(ctx.cookies.get('io'));
@@ -12,7 +12,7 @@ router.get('/book/list', async ctx => {
   //   }
   // };
 
-  throw new HttpException('为啥呢？？', 10000, 200);
+  throw new global.exception.HttpException('出错了！', 99999, 500);
 });
 
 module.exports = router;

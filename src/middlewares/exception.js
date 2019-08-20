@@ -3,14 +3,27 @@ const catcherror = async (ctx, next) => {
   try {
     await next();
   } catch (error) {
+    // 开发环境 throw error
+    if (global.config.env === 'dev') {
+      throw error;
+      // console.log(error.msg ? `${error.msg}: ` : '');
+      // console.log(error.stack);
+    }
     if (error instanceof HttpException) {
       const { msg, errcode, status } = error;
       ctx.body = {
         msg,
         errcode,
-        status,
         request: `${ctx.method} ${ctx.path}`
       };
+      ctx.status = status;
+    } else {
+      ctx.body = {
+        msg: '系统异常，请稍后再试！',
+        errcode: 99999,
+        request: `${ctx.method} ${ctx.path}`
+      };
+      ctx.status = 500;
     }
   }
 };

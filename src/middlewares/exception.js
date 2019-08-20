@@ -1,4 +1,9 @@
 const { HttpException } = require('@src/core/http_exception');
+/**
+ * catch全局错误并进行统一处理返回给浏览器客户端。
+ * @param {object} ctx koa context
+ * @param {function} next callback function
+ */
 const catcherror = async (ctx, next) => {
   try {
     await next();

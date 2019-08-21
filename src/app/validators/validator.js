@@ -1,5 +1,6 @@
 const { Rule, LinValidator } = require('@src/core/lin_validator');
 const User = require('../model/user');
+const { LoginType } = require('../lib/enum');
 
 class RegisterValidator extends LinValidator {
   constructor() {
@@ -43,7 +44,19 @@ class RegisterValidator extends LinValidator {
 class TokenValidator extends LinValidator {
   constructor() {
     super();
-    this.account = [];
+    this.account = [new Rule('isLength', '账号长度不符合4-32个字符的规则', { min: 4, max: 32 })];
+    this.secret = [
+      new Rule('isOptional'),
+      new Rule('isLength', 'secret长度不符合6-128个字符的规则', { min: 6, max: 128 })
+    ];
+  }
+  validateLoginType(vals) {
+    if (!vals.body.type) {
+      throw new Error('type不能为空');
+    }
+    if (!LoginType.isThisType(vals.body.type)) {
+      throw new Error('type不合法');
+    }
   }
 }
 

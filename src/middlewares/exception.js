@@ -1,5 +1,5 @@
-const { HttpException } = require('@src/core/http_exception');
-const { env } = require('../config/index').env;
+const { HttpException } = require('../core/http_exception');
+const { env } = require('../config/index');
 /**
  * catch全局错误并进行统一处理返回给浏览器客户端。
  * @param {object} ctx koa context
@@ -9,13 +9,14 @@ const catcherror = async (ctx, next) => {
   try {
     await next();
   } catch (error) {
+    const isHttpException = error instanceof HttpException;
     // 开发环境 throw error
-    if (env === 'dev') {
+    if (env === 'dev' && !isHttpException) {
       throw error;
       // console.log(error.msg ? `${error.msg}: ` : '');
       // console.log(error.stack);
     }
-    if (error instanceof HttpException) {
+    if (isHttpException) {
       const { msg, errcode, status } = error;
       ctx.body = {
         msg,

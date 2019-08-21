@@ -10,6 +10,15 @@ class HttpException extends Error {
   }
 }
 
+class Success extends HttpException {
+  constructor(msg = 'ok', errorCode = 0) {
+    super();
+    this.msg = msg;
+    this.status = 201;
+    this.errcode = errorCode;
+  }
+}
+
 /**
  * 参数异常封装
  */
@@ -22,4 +31,4 @@ class ParameterException extends HttpException {
   }
 }
 
-module.exports = { HttpException, ParameterException };
+module.exports = { HttpException, Success, ParameterException };

@@ -5,7 +5,7 @@
  */
 
 const validator = require('validator');
-const { ParameterException } = require('./http-exception');
+const { ParameterException } = require('./http_exception');
 const { get, last, set, cloneDeep } = require('lodash');
 const { findMembers } = require('./util');
 

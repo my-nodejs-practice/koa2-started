@@ -6,7 +6,7 @@ class InitManager {
   static initCore(app) {
     InitManager.app = app; // koa实例
     InitManager.loadRouters();
-    InitManager.loadHttpException();
+    // InitManager.loadHttpException();
     InitManager.loadConfig();
   }
 
@@ -29,9 +29,9 @@ class InitManager {
   /**
    * 将异常类绑定到全局变量上，方便后续使用。
    */
-  static loadHttpException() {
-    global.exception = require('./http_exception');
-  }
+  // static loadHttpException() {
+  //   global.exception = require('./http_exception');
+  // }
 }
 
 module.exports = InitManager;

@@ -3,12 +3,35 @@ const router = new Router({
   prefix: '/v1/token'
 });
 const { TokenValidator } = require('../../validators/validator');
-const { Success } = require('@src/core/http_exception');
+// const { Success } = require('@src/core/http_exception');
+const { LoginType } = require('../../lib/enum');
+const { generateToken } = require('@src/core/util');
+const User = require('../../model/user');
 
 router.post('/', async ctx => {
   const v = await new TokenValidator().validate(ctx);
-  console.log(v);
-  throw new Success('校验成功');
+  let token;
+  switch (v.get('body.type')) {
+    case LoginType.USER_MINI_PROGRAM:
+      break;
+    case LoginType.USER_EMAIL:
+      token = await emailLogin(v.get('body.account'), v.get('body.secret'));
+      break;
+    case LoginType.USER_MOBILE:
+      break;
+    case LoginType.ADMIN_EMAIL:
+      break;
+    default:
+  }
+  ctx.body = {
+    token
+  };
+  // throw new Success('校验成功');
 });
+
+async function emailLogin(account, secret) {
+  const user = await User.verifyEmailPassword(account, secret);
+  return generateToken(user.id, 2);
+}
 
 module.exports = router;

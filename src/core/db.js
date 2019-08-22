@@ -18,6 +18,6 @@ const sql = new Sequelize(dbName, user, password, {
   }
 });
 
-sql.sync({ force: true });
+sql.sync({ force: false });
 
 module.exports = { sql };

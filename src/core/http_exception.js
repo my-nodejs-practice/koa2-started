@@ -31,4 +31,16 @@ class ParameterException extends HttpException {
   }
 }
 
-module.exports = { HttpException, Success, ParameterException };
+/**
+ * 参数异常封装
+ */
+class AuthFailed extends HttpException {
+  constructor(msg = '授权失败', errcode = 10004) {
+    super();
+    this.status = 401;
+    this.msg = msg;
+    this.errcode = errcode;
+  }
+}
+
+module.exports = { HttpException, Success, ParameterException, AuthFailed };

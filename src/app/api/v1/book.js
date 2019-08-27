@@ -1,12 +1,14 @@
 const Router = require('@koa/router');
 const router = new Router();
 // const { ParameterException } = require('@src/core/http_exception');
-const auth = require('@src/middlewares/authority');
+const Auth = require('@src/middlewares/authority');
 
-router.get('/book/list', auth, async ctx => {
+router.get('/book/list', new Auth(2).authority, async ctx => {
+  // ctx.auth.scope < 
   ctx.body = {
     code: 100,
     data: {
+      uid: ctx.auth.uid,
       name: 'books'
     }
   };

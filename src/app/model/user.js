@@ -19,6 +19,22 @@ class User extends Model {
     }
     return user;
   }
+
+  // static async getUserByOpenid(openid) {
+  //   return await User.findOne({
+  //     where: {
+  //       openid
+  //     }
+  //   });
+  // }
+
+  static async findOrCreateByOpenid(openid) {
+    return await User.findOrCreate({ where: { openid } });
+  }
+
+  // static async registerByOpenid(openid) {
+  //   return User.increment
+  // }
 }
 
 User.init(

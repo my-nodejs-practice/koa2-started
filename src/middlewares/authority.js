@@ -1,6 +1,9 @@
 const basicAuth = require('basic-auth');
 const jwt = require('jsonwebtoken');
 const { Forbbiden } = require('../core/http_exception');
+const {
+  security: { secretKey }
+} = require('@src/config/index');
 
 // const auth = async (ctx, next) => {
 //   const userToken = basicAuth(ctx.req);
@@ -43,7 +46,7 @@ class Auth {
         throw new Forbbiden();
       }
       try {
-        decode = jwt.verify(userToken.name, global.config.security.secretKey);
+        decode = jwt.verify(userToken.name, secretKey);
       } catch (error) {
         if (error.name === 'TokenExpiredError') {
           // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsInNjb3BlIjoyLCJpYXQiOjE1NjY0NTg2NjQsImV4cCI6MTU2NjU0NTA2NH0.UmGmjcZJOLH5U4FawNyfHLFPYLr6hDGgRbUK7xcTbII
@@ -66,6 +69,15 @@ class Auth {
       };
       await next();
     };
+  }
+
+  static verifyToken(token) {
+    try {
+      jwt.verify(token, secretKey);
+      return true;
+    } catch (error) {
+      return false;
+    }
   }
 }
 

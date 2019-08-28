@@ -2,7 +2,7 @@ const Router = require('@koa/router');
 const router = new Router({
   prefix: '/v1/token'
 });
-const { TokenValidator } = require('../../validators/validator');
+const { TokenValidator, NotEmptyValidator } = require('../../validators/validator');
 // const { Success } = require('@src/core/http_exception');
 const { LoginType } = require('../../lib/enum');
 const { generateToken } = require('@src/core/util');
@@ -30,6 +30,14 @@ router.post('/', async ctx => {
     token
   };
   // throw new Success('校验成功');
+});
+
+router.post('/verify', async ctx => {
+  const v = await new NotEmptyValidator().validate(ctx);
+  const result = Auth.verifyToken(v.get('body.token'));
+  ctx.body = {
+    result
+  };
 });
 
 async function emailLogin(account, secret) {

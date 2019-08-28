@@ -55,6 +55,11 @@ class Auth {
       }
       // eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1aWQiOjEsInNjb3BlIjoyLCJpYXQiOjE1NjY4NzcxMDcsImV4cCI6MTU2Njk2MzUwN30.k2Phh5p0NtjyfZdt8XBdqttogTpRbhNIcpMUecukvw0
       // console.log(`decode::${JSON.stringify(decode)}`); // decode::{"uid":1,"scope":2,"iat":1566877107,"exp":1566963507}
+
+      if (decode.scope < this.role) {
+        throw new Forbbiden('权限不足');
+      }
+
       ctx.auth = {
         uid: decode.uid,
         scope: decode.scope

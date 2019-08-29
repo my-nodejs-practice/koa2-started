@@ -1,7 +1,11 @@
 const { sql } = require('@src/core/db');
 const { Sequelize, Model } = require('sequelize');
 
-class Favor extends Model {}
+class Favor extends Model {
+  static async like(art_id, type, uid) {
+    
+  }
+}
 Favor.init(
   {
     art_id: Sequelize.INTEGER,

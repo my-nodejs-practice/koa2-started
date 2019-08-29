@@ -15,4 +15,12 @@ const LoginType = {
   ADMIN_EMAIL: 200
 };
 
-module.exports = { LoginType };
+const ArtType = {
+  isThisType,
+  MOVIE: 100,
+  MUSIC: 200,
+  SENTENCE: 300,
+  BOOK: 400
+};
+
+module.exports = { LoginType, ArtType };

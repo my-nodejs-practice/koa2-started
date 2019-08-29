@@ -1,6 +1,6 @@
 const { Rule, LinValidator } = require('@src/core/lin_validator');
 const User = require('../model/user');
-const { LoginType } = require('../lib/enum');
+const { LoginType, ArtType } = require('../lib/enum');
 
 class RegisterValidator extends LinValidator {
   constructor() {
@@ -67,4 +67,19 @@ class NotEmptyValidator extends LinValidator {
   }
 }
 
-module.exports = { RegisterValidator, TokenValidator, NotEmptyValidator };
+class LikeValidator extends LinValidator {
+  constructor() {
+    super();
+    this.art_id = [new Rule('isInt', '需要是正整数', { min: 1 })];
+  }
+  validateType(vals) {
+    if (!vals.body.type) {
+      throw new Error('type不能为空');
+    }
+    if (!ArtType.isThisType(vals.body.type)) {
+      throw new Error('type不合法');
+    }
+  }
+}
+
+module.exports = { RegisterValidator, TokenValidator, NotEmptyValidator, LikeValidator };

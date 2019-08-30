@@ -3,7 +3,7 @@ module.exports = {
     commonjs: true,
     es6: true
   },
-  extends: ['eslint:recommended', 'plugin:xmfe/recommended'],
+  extends: ['eslint:recommended', 'plugin:xmfe/node'],
   globals: {
     Atomics: 'readonly',
     SharedArrayBuffer: 'readonly'

@@ -1,7 +1,7 @@
 const { Music, Movie, Sentence } = require('./classic');
 
 class Art {
-  static async getList(art_id, type) {
+  static async getData(art_id, type) {
     let art = null;
     const finder = {
       where: {
@@ -22,6 +22,16 @@ class Art {
     }
     return art;
   }
+
+  // static async increment(art_id, type) {
+  //   const art = await Art.findOne({ where: { art_id, type } });
+  //   return art.increment('fav_nums', { by: 1 });
+  // }
+
+  // static async decrement(art_id, type) {
+  //   const art = await Art.findOne({ where: { art_id, type } });
+  //   return art.decrement('fav_nums', { by: 1 });
+  // }
 }
 
 module.exports = { Art };

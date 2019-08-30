@@ -26,6 +26,7 @@ router.post('/', async ctx => {
       break;
     default:
   }
+  // eslint-disable-next-line
   ctx.body = {
     token
   };
@@ -35,6 +36,7 @@ router.post('/', async ctx => {
 router.post('/verify', async ctx => {
   const v = await new NotEmptyValidator().validate(ctx);
   const result = Auth.verifyToken(v.get('body.token'));
+  // eslint-disable-next-line
   ctx.body = {
     result
   };

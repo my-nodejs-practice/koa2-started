@@ -29,7 +29,13 @@ class User extends Model {
   // }
 
   static async findOrCreateByOpenid(openid) {
-    return await User.findOrCreate({ where: { openid } });
+    const [user, created] = await User.findOrCreate({ where: { openid } });
+    if (created) {
+      console.log('新建用户');
+    } else {
+      console.log('已存在用户');
+    }
+    return user;
   }
 
   // static async registerByOpenid(openid) {

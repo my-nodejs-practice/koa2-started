@@ -22,7 +22,7 @@ class WxManager {
       throw new AuthFailed(`授权失败：${msg}`);
     }
     // 请求成功，将用户保存到数据库，再生成token返回。
-    const user = User.findOrCreateByOpenid(openid);
+    const user = await User.findOrCreateByOpenid(openid);
     return generateToken(user.id, Auth.USER);
   }
 }

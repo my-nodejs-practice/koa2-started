@@ -9,6 +9,10 @@
   "keywords": [],
   "author": "lizhigao <lizhigao1231@163.com>",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/my-nodejs-practice/koa2-starter.git"
+  },
   "dependencies": {
     "@koa/router": "^8.0.0",
     "axios": "^0.19.0",
@@ -27,5 +31,9 @@
   "_moduleAliases": {
     "@root": ".",
     "@src": "./src"
+  },
+  "devDependencies": {
+    "eslint": "^6.2.2",
+    "eslint-plugin-xmfe": "0.0.2"
   }
 }

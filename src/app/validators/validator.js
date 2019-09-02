@@ -82,4 +82,11 @@ class LikeValidator extends LinValidator {
   }
 }
 
-module.exports = { RegisterValidator, TokenValidator, NotEmptyValidator, LikeValidator };
+class ClassicValidator extends LinValidator {
+  constructor() {
+    super();
+    this.index = [new Rule('isInt', '需要正整数', { min: 1 })];
+  }
+}
+
+module.exports = { RegisterValidator, TokenValidator, NotEmptyValidator, LikeValidator, ClassicValidator };

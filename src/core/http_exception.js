@@ -70,4 +70,22 @@ class DisLikeError extends HttpException {
   }
 }
 
-module.exports = { HttpException, Success, ParameterException, AuthFailed, Forbbiden, LikeError, DisLikeError };
+class NotFound extends HttpException {
+  constructor(msg = '资源未找到', errcode = 10000) {
+    super();
+    this.status = 404;
+    this.msg = msg;
+    this.errcode = errcode;
+  }
+}
+
+module.exports = {
+  HttpException,
+  Success,
+  ParameterException,
+  AuthFailed,
+  Forbbiden,
+  LikeError,
+  DisLikeError,
+  NotFound
+};

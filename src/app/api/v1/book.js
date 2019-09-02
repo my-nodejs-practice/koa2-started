@@ -3,7 +3,7 @@ const router = new Router();
 // const { ParameterException } = require('@src/core/http_exception');
 const Auth = require('@src/middlewares/authority');
 
-router.get('/book/list', new Auth(6).authority, async ctx => {
+router.get('/book/hot_list', new Auth(6).authority, async ctx => {
   ctx.body = {
     code: 100,
     data: {

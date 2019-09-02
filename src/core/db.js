@@ -14,7 +14,14 @@ const sql = new Sequelize(dbName, user, password, {
     updatedAt: 'updated_at',
     deletedAt: 'deleted_at',
     underscored: true,
-    freezeTableName: true // 防止数据库表自动使用复数
+    freezeTableName: true, // 防止数据库表自动使用复数
+    scopes: {
+      bh: {
+        attributes: {
+          exclude: ['updated_at', 'deleted_at', 'created_at']
+        }
+      }
+    }
   }
 });
 

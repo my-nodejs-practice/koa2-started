@@ -30,6 +30,7 @@
   },
   "_moduleAliases": {
     "@root": ".",
+    "@models": "./src/app/model",
     "@src": "./src"
   },
   "devDependencies": {

@@ -17,7 +17,7 @@ class Favor extends Model {
     }
     return sql.transaction(async t => {
       await Favor.create({ art_id, type, uid }, { transaction: t });
-      const art = await Art.getData(art_id, type);
+      const art = await Art.getData(art_id, type, false);
       await art.increment('fav_nums', { by: 1, transaction: t });
     });
   }
@@ -35,9 +35,20 @@ class Favor extends Model {
     }
     return sql.transaction(async t => {
       await favor.destroy({ force: true, transaction: t });
-      const art = await Art.getData(art_id, type);
+      const art = await Art.getData(art_id, type, false);
       await art.decrement('fav_nums', { by: 1, transaction: t });
     });
+  }
+
+  static async userLikeIt(art_id, type, uid) {
+    const favor = await Favor.findOne({
+      where: {
+        uid,
+        art_id,
+        type
+      }
+    });
+    return favor ? true : false;
   }
 }
 Favor.init(

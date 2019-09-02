@@ -59,8 +59,9 @@ router.get('/:type/:id', new Auth().authority, async ctx => {
   }
 
   const like = await Favor.userLikeIt(id, type, ctx.auth.uid);
+  const plainArt = art.get({ plain: true });
   ctx.body = {
-    art,
+    ...plainArt,
     like_status: like
   };
 });

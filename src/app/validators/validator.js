@@ -89,4 +89,27 @@ class ClassicValidator extends LinValidator {
   }
 }
 
-module.exports = { RegisterValidator, TokenValidator, NotEmptyValidator, LikeValidator, ClassicValidator };
+class ClassicValidator2 extends LinValidator {
+  constructor() {
+    super();
+    this.id = [new Rule('isInt', '需要正整数', { min: 1 })];
+  }
+  validateType(vals) {
+    const type = parseInt(vals.path.type);
+    if (!type) {
+      throw new Error('type不能为空');
+    }
+    if (!ArtType.isThisType(type)) {
+      throw new Error('type不合法');
+    }
+  }
+}
+
+module.exports = {
+  RegisterValidator,
+  TokenValidator,
+  NotEmptyValidator,
+  LikeValidator,
+  ClassicValidator,
+  ClassicValidator2
+};

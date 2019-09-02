@@ -60,7 +60,22 @@ router.get('/:type/:id', new Auth().authority, async ctx => {
 
   const like = await Favor.userLikeIt(id, type, ctx.auth.uid);
   ctx.body = {
-    // art,
+    art,
+    like_status: like
+  };
+});
+
+router.get('/:type/:id/favor', new Auth().authority, async ctx => {
+  const v = await new ClassicValidator2().validate(ctx);
+  const type = parseInt(v.get('path.type'));
+  const id = v.get('path.id');
+  const art = await Art.getData(id, type);
+  if (!art) {
+    throw new NotFound();
+  }
+
+  const like = await Favor.userLikeIt(id, type, ctx.auth.uid);
+  ctx.body = {
     fav_nums: art.fav_nums,
     like_status: like
   };

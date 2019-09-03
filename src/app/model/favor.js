@@ -1,7 +1,7 @@
 const { sql } = require('@src/core/db');
 const { Sequelize, Model } = require('sequelize');
 const { LikeError, DisLikeError } = require('@src/core/http_exception');
-const { Art } = require('./art');
+const Art = require('./art');
 
 class Favor extends Model {
   /**
@@ -63,4 +63,4 @@ Favor.init(
   }
 );
 
-module.exports = { Favor };
+module.exports = Favor;

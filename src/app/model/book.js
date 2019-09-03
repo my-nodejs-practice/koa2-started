@@ -16,4 +16,6 @@ Book.init(
   { sequelize: sql, tableName: 'book' }
 );
 
-module.exports = { Book };
+// Book.sync({ force: true });
+
+module.exports = Book;

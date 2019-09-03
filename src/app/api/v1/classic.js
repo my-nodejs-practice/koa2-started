@@ -1,13 +1,14 @@
 const Router = require('@koa/router');
+const Auth = require('@src/middlewares/authority');
+const Flow = require('@models/flow');
+const Art = require('@models/art');
+const Favor = require('@models/favor');
+const { ClassicValidator, ClassicValidator2 } = require('../../validators/validator');
+const { NotFound } = require('@src/core/http_exception');
+
 const router = new Router({
   prefix: '/v1/classic'
 });
-const Auth = require('@src/middlewares/authority');
-const { Flow } = require('@models/flow');
-const { Art } = require('@models/art');
-const { Favor } = require('@models/favor');
-const { ClassicValidator, ClassicValidator2 } = require('../../validators/validator');
-const { NotFound } = require('@src/core/http_exception');
 
 router.get('/list', async ctx => {
   ctx.body = {

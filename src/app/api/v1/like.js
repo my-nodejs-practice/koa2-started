@@ -1,11 +1,12 @@
 const Router = require('@koa/router');
+const { LikeValidator } = require('../../validators/validator');
+const Favor = require('../../model/favor');
+const { Success } = require('@src/core/http_exception');
+const Auth = require('@src/middlewares/authority');
+
 const router = new Router({
   prefix: '/v1/like'
 });
-const { LikeValidator } = require('../../validators/validator');
-const { Favor } = require('../../model/favor');
-const { Success } = require('@src/core/http_exception');
-const Auth = require('@src/middlewares/authority');
 
 router.post('/', new Auth().authority, async ctx => {
   const v = await new LikeValidator().validate(ctx);

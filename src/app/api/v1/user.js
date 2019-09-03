@@ -1,10 +1,11 @@
 const Router = require('@koa/router');
-const router = new Router({
-  prefix: '/v1/user'
-});
 const { RegisterValidator } = require('../../validators/validator');
 const { Success } = require('@src/core/http_exception');
 const User = require('../../model/user');
+
+const router = new Router({
+  prefix: '/v1/user'
+});
 
 router.post('/register', async ctx => {
   const v = await new RegisterValidator().validate(ctx);

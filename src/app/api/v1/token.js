@@ -1,7 +1,4 @@
 const Router = require('@koa/router');
-const router = new Router({
-  prefix: '/v1/token'
-});
 const { TokenValidator, NotEmptyValidator } = require('../../validators/validator');
 // const { Success } = require('@src/core/http_exception');
 const { LoginType } = require('../../lib/enum');
@@ -9,6 +6,10 @@ const { generateToken } = require('@src/core/util');
 const User = require('../../model/user');
 const Auth = require('@src/middlewares/authority');
 const WxManager = require('../../services/wx');
+
+const router = new Router({
+  prefix: '/v1/token'
+});
 
 router.post('/', async ctx => {
   const v = await new TokenValidator().validate(ctx);

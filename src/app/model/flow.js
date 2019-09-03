@@ -11,4 +11,4 @@ Flow.init(
   { sequelize: sql, tableName: 'flow' }
 );
 
-module.exports = { Flow };
+module.exports = Flow;

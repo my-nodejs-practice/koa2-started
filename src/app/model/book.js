@@ -1,7 +1,17 @@
 const { sql } = require('@src/core/db');
 const { Sequelize, Model } = require('sequelize');
+const util = require('util');
+const axios = require('axios');
 
-class Book extends Model {}
+class Book extends Model {
+  constructor() {
+    super();
+  }
+  async getDetailById(id) {
+    const url = util.format(global.config.yushu.detailUrl, id);
+    return await axios.get(url);
+  }
+}
 Book.init(
   {
     id: {

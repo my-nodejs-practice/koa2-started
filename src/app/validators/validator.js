@@ -105,11 +105,19 @@ class ClassicValidator2 extends LinValidator {
   }
 }
 
+class IdValidator extends LinValidator {
+  constructor() {
+    super();
+    this.id = [new Rule('isInt', '需要正整数', { min: 1 })];
+  }
+}
+
 module.exports = {
   RegisterValidator,
   TokenValidator,
   NotEmptyValidator,
   LikeValidator,
   ClassicValidator,
-  ClassicValidator2
+  ClassicValidator2,
+  IdValidator
 };

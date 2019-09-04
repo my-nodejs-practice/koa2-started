@@ -24,7 +24,7 @@ require('./app/model/user');
 app.use(catchError);
 app.use(bodyParser());
 InitManager.initCore(app);
-app.use(compress());
+app.use(compress()); // 压缩
 app.use(static(path.resolve(__dirname, './static')));
 
 app.listen(global.config.port);

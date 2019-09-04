@@ -1,9 +1,11 @@
 module.exports = {
   env: 'dev',
+  host: 'localhost', // api host
+  port: 3000, // api 端口
   db: {
     dbName: 'study',
-    host: 'localhost',
-    port: 3306,
+    host: 'localhost', // 数据库域名地址
+    port: 3306, // 数据库端口
     user: 'root',
     password: 'qq@532814151'
   },

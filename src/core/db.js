@@ -1,5 +1,6 @@
-const Sequelize = require('sequelize');
+const { Sequelize, Model } = require('sequelize');
 const { dbName, user, password, host, port } = require('../config/index').db;
+const { clone, unset, isArray } = require('lodash');
 
 const sql = new Sequelize(dbName, user, password, {
   host,
@@ -26,5 +27,28 @@ const sql = new Sequelize(dbName, user, password, {
 });
 
 sql.sync({ force: false });
+
+// 序列化返回给前端的数据。
+Model.prototype.toJSON = function() {
+  // let data = this.dataValues
+  let data = clone(this.dataValues);
+  unset(data, 'updated_at');
+  unset(data, 'created_at');
+  unset(data, 'deleted_at');
+
+  // 针对服务器本地图片进行统一添加域名端口前缀。
+  for (const key in data) {
+    if (key === 'image') {
+      if (!data[key].startsWith('http')) data[key] = global.config.host + global.config.port + data[key];
+    }
+  }
+
+  if (isArray(this.exclude)) {
+    this.exclude.forEach(value => {
+      unset(data, value);
+    });
+  }
+  return data;
+};
 
 module.exports = { sql };

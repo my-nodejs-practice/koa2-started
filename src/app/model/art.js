@@ -1,4 +1,4 @@
-const path = require('path');
+// const path = require('path');
 const { Music, Movie, Sentence } = require('./classic');
 
 class Art {
@@ -32,11 +32,6 @@ class Art {
       }
       default:
     }
-
-    if (art && art.image) {
-      art.image = `${global.config.host}:${global.config.port}/${art.image}`;
-    }
-
     return art;
   }
 

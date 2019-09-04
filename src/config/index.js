@@ -1,6 +1,6 @@
 module.exports = {
   env: 'dev',
-  host: 'localhost', // api host
+  host: 'http://localhost', // api host
   port: 3000, // api 端口
   db: {
     dbName: 'study',

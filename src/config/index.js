@@ -1,13 +1,13 @@
 module.exports = {
   env: 'dev',
-  host: 'http://localhost', // api host
+  host: 'http://imooc.lizimu.top', // api host
   port: 3000, // api 端口
   db: {
     dbName: 'study',
-    host: 'localhost', // 数据库域名地址
+    host: '94.191.117.102', // 'localhost', // 数据库域名地址
     port: 3306, // 数据库端口
     user: 'root',
-    password: 'qq@532814151'
+    password: 'lzg_!qaz@wsx'
   },
   security: {
     secretKey: 'lizhigao', // jwt令牌秘钥

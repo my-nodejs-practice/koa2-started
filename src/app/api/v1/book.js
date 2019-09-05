@@ -2,7 +2,7 @@ const Router = require('@koa/router');
 // const { ParameterException } = require('@src/core/http_exception');
 const Auth = require('@src/middlewares/authority');
 const HotBook = require('@models/hotBook');
-const Book = require('@models/Book');
+const Book = require('@models/book');
 const { IdValidator } = require('../../validators/validator');
 
 const router = new Router({

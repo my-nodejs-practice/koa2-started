@@ -4,7 +4,7 @@ module.exports = {
   port: 3000, // api 端口
   db: {
     dbName: 'study',
-    host: '94.191.117.102', // 'localhost', // 数据库域名地址
+    host: '127.0.0.1', // 数据库域名地址
     port: 3306, // 数据库端口
     user: 'root',
     password: 'lzg_!qaz@wsx'

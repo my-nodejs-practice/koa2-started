@@ -18,6 +18,7 @@ class InitManager {
    * 自动寻找并加载指定目录文件路由
    */
   static loadRouters() {
+    console.log('[loadRouters]', `${process.cwd()}/src/app/api/v1`);
     requireDirectory(module, `${process.cwd()}/src/app/api/v1`, {
       visit: mod => {
         if (mod instanceof Router) {
